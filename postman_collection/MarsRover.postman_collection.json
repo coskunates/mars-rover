@@ -1,0 +1,1128 @@
+{
+	"info": {
+		"_postman_id": "a7b7e1fa-07d4-4937-b964-b1454900b174",
+		"name": "Mars Rover",
+		"description": "Mars Rover Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Plateau",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"upper_bound_x\": 25,\n    \"upper_bound_y\": 25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/plateaus",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"plateaus"
+					]
+				},
+				"description": "This endpoint creates new plateau."
+			},
+			"response": [
+				{
+					"name": "Create Plateau - Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"upper_bound_x\": 25,\n    \"upper_bound_y\": 25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/plateaus",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"plateaus"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:39:38 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 32,\n        \"upper_bound_x\": 25,\n        \"upper_bound_y\": 25\n    }\n}"
+				},
+				{
+					"name": "Create Plateau - Fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"upper_bound_x\": -1,\n    \"upper_bound_y\": 25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/plateaus",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"plateaus"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:40:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Upper Bound X field must be numeric and at least 1!\",\n    \"code\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Plateau",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/plateaus/{plateauId}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"plateaus",
+						"{plateauId}"
+					]
+				},
+				"description": "This endpoint retrieves the plateau of given id."
+			},
+			"response": [
+				{
+					"name": "Get Plateau - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/plateaus/33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"plateaus",
+								"33"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:41:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 33,\n        \"upper_bound_x\": 25,\n        \"upper_bound_y\": 25\n    }\n}"
+				},
+				{
+					"name": "Get Plateau - Fail (Record not found)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/plateaus/10000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"plateaus",
+								"10000"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:41:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Plateau not found! (id: 10000)\",\n    \"code\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Rover",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"plateau_id\": 33,\n    \"x\": 1,\n    \"y\": 2,\n    \"direction\": \"N\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/rovers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"rovers"
+					]
+				},
+				"description": "This endpoint creates new rover on given plateau."
+			},
+			"response": [
+				{
+					"name": "Create Rover - Fail (Plateau not found)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plateau_id\": 10000,\n    \"x\": 1,\n    \"y\": 2,\n    \"direction\": \"N\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:43:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Plateau not found! (id: 10000)\",\n    \"code\": 1\n}"
+				},
+				{
+					"name": "Create Rover - Fail (Out of bounds)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plateau_id\": 33,\n    \"x\": 100,\n    \"y\": 2,\n    \"direction\": \"N\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:43:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Rover is out of bounds for x. (Given: 100, Maximum: 25)!\",\n    \"code\": 8\n}"
+				},
+				{
+					"name": "Create Rover - Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plateau_id\": 33,\n    \"x\": 2,\n    \"y\": 0,\n    \"direction\": \"N\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:46:39 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 41,\n        \"plateau_id\": 33,\n        \"x\": 2,\n        \"y\": 0,\n        \"direction\": \"N\"\n    }\n}"
+				},
+				{
+					"name": "Create Rover - Fail (Invalid direction)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"plateau_id\": 33,\n    \"x\": 2,\n    \"y\": 0,\n    \"direction\": \"T\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:47:18 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Invalid Direction!\",\n    \"code\": 13\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Rover",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/rovers/{roverId}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"rovers",
+						"{roverId}"
+					]
+				},
+				"description": "This endpoint retrieves the reover of given id."
+			},
+			"response": [
+				{
+					"name": "Get Rover - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rovers/41",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"41"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:47:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 41,\n        \"plateau_id\": 33,\n        \"x\": 2,\n        \"y\": 0,\n        \"direction\": \"N\",\n        \"plateau\": {\n            \"id\": 33,\n            \"upper_bound_x\": 25,\n            \"upper_bound_y\": 25\n        }\n    }\n}"
+				},
+				{
+					"name": "Get Rover - Fail (Record not found)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rovers/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"1000"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:48:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Rover not found! (id: 1000)\",\n    \"code\": 6\n}"
+				}
+			]
+		},
+		{
+			"name": "Move Rover",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"commands\": \"MMMMMM\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/rovers/{roverId}/move",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"rovers",
+						"{roverId}",
+						"move"
+					]
+				},
+				"description": "This endpoint moves the rover on plateau."
+			},
+			"response": [
+				{
+					"name": "Move Rover - Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commands\": \"LMLMLMLMM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers/42/move",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"42",
+								"move"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:50:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"x\": 1,\n        \"y\": 3,\n        \"direction\": \"N\"\n    }\n}"
+				},
+				{
+					"name": "Move Rover - Fail (Minimum limit)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commands\": \"LMMMM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers/42/move",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"42",
+								"move"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:51:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Rover can't move on West direction. Because of minimum limit of this direction is 0\",\n    \"code\": 15\n}"
+				},
+				{
+					"name": "Move Rover - Fail (Maximum limit)",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commands\": \"MMMMMM\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rovers/42/move",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"42",
+								"move"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:52:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Rover can't move on North direction. Because of maximum limit of this direction is 25\",\n    \"code\": 14\n}"
+				}
+			]
+		},
+		{
+			"name": "Rover State",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/rovers/{roverId}/state",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"rovers",
+						"{roverId}",
+						"state"
+					]
+				},
+				"description": "This endpoint retrieves the state of rover."
+			},
+			"response": [
+				{
+					"name": "Rover State - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rovers/42/state",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"42",
+								"state"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:52:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 42,\n        \"plateau_id\": 33,\n        \"x\": 1,\n        \"y\": 3,\n        \"direction\": \"N\"\n    }\n}"
+				},
+				{
+					"name": "Rover State - Fail (Record not found)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/rovers/1000/state",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rovers",
+								"1000",
+								"state"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:54:16 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Rover not found! (id: 1000)\",\n    \"code\": 6\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Plateau v2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/v2/plateaus/{roverId}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v2",
+						"plateaus",
+						"{roverId}"
+					]
+				},
+				"description": "This endpoint is sample for api versioning."
+			},
+			"response": [
+				{
+					"name": "Get Plateau v2 - Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/plateaus/33",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v2",
+								"plateaus",
+								"33"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:53:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": false,\n    \"data\": {\n        \"id\": 33,\n        \"upper_bound_x\": 25,\n        \"upper_bound_y\": 25,\n        \"version\": \"v2\"\n    }\n}"
+				},
+				{
+					"name": "Get Plateau v2 - Fail (Record not found)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/v2/plateaus/10000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v2",
+								"plateaus",
+								"10000"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.21.4"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 13:53:51 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.0alpha3"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": true,\n    \"message\": \"Plateau not found! (id: 10000)\",\n    \"code\": 1\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "last_created_plateau_id",
+			"value": ""
+		},
+		{
+			"key": "last_created_rover_id",
+			"value": ""
+		}
+	]
+}

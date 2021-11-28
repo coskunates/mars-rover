@@ -1,0 +1,7 @@
+/.idea
+/docker/mysql/data/
+/service/vendor
+/service/.idea
+/service/tests/coverage
+/service/.phpunit.result.cache
+/service/.phpunit.cache
