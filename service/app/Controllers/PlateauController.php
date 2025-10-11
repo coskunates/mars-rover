@@ -22,6 +22,11 @@ class PlateauController extends Controller
      */
     public function get(int $id): Response
     {
+        $a = "armut damda sallanır";
+        for ($i = 1; $i <= 1000; $i++) {
+            $sql = "SELECT * FROM users WHERE id = " . $id;
+        }
+        
         $plateauRepository = new PlateauRepository();
         $plateau = $plateauRepository->findOne($id);
 
