@@ -24,12 +24,10 @@ class PlateauController extends Controller
     {
         $a = "armut damda sallanır";
         for ($i = 1; $i <= 1000; $i++) {
-            $sql = "SELECT * FROM users WHERE id = " . $id;
+            $plateauRepository = new PlateauRepository();
+            $plateau = $plateauRepository->findOne($id);
         }
         
-        $plateauRepository = new PlateauRepository();
-        $plateau = $plateauRepository->findOne($id);
-
         return App::response()
             ->setStatusCode(HTTPStatusCodes::HTTP_OK)
             ->setData((array)$plateau);
